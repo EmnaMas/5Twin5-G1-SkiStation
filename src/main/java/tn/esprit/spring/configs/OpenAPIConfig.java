@@ -14,7 +14,6 @@ public class OpenAPIConfig {
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
                 .info(infoAPI());
-
     }
 
     public Info infoAPI() {
@@ -22,7 +21,6 @@ public class OpenAPIConfig {
                 .description("Case Study - SKI STATION")
                 .contact(contactAPI());
     }
-
     public Contact contactAPI() {
         return new Contact().name("TEAM ASI II")
                 .email("ons.bensalah@esprit.tn")
