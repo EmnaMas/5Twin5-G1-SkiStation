@@ -85,16 +85,19 @@ public class SkierServicesImpl implements ISkierServices {
     public Skier assignSkierToPiste(Long numSkieur, Long numPiste) {
         Skier skier = skierRepository.findById(numSkieur).orElse(null);
         Piste piste = pisteRepository.findById(numPiste).orElse(null);
-        try {
+
+        if (skier == null) {
+            skier = new Skier();
+            skier.setPistes(new HashSet<>());
+        }
+
+        if (piste != null) {
             skier.getPistes().add(piste);
-        } catch (NullPointerException exception) {
-            Set<Piste> pisteList = new HashSet<>();
-            pisteList.add(piste);
-            skier.setPistes(pisteList);
         }
 
         return skierRepository.save(skier);
     }
+
 
     @Override
     public List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription typeSubscription) {

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SubscriptionTest {
+ class SubscriptionTest {
 
     private Subscription subscription;
 
@@ -25,27 +25,27 @@ public class SubscriptionTest {
     }
 
     @Test
-    public void testGetNumSub() {
+     void testGetNumSub() {
         assertEquals(1L, subscription.getNumSub());
     }
 
     @Test
-    public void testGetStartDate() {
+     void testGetStartDate() {
         assertEquals(LocalDate.of(2023, 1, 1), subscription.getStartDate());
     }
 
     @Test
-    public void testGetEndDate() {
+     void testGetEndDate() {
         assertEquals(LocalDate.of(2024, 1, 1), subscription.getEndDate());
     }
 
     @Test
-    public void testGetPrice() {
+     void testGetPrice() {
         assertEquals(100.0f, subscription.getPrice(), 0.01); // Utilize a tolerance margin
     }
 
     @Test
-    public void testGetTypeSub() {
+     void testGetTypeSub() {
         assertEquals(TypeSubscription.ANNUAL, subscription.getTypeSub());
     }
 }
