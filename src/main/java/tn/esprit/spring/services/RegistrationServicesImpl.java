@@ -35,9 +35,12 @@ public class RegistrationServicesImpl implements  IRegistrationServices{
         Course course = courseRepository.findById(numCourse).orElse(null);
         if (registration != null && course != null) {
             registration.setCourse(course);
+            return registrationRepository.save(registration);
+        } else {
+            return null;
         }
-        return registrationRepository.save(registration);
     }
+
 
     @Transactional
     @Override
@@ -94,6 +97,10 @@ public class RegistrationServicesImpl implements  IRegistrationServices{
         return registration;
 
     }
+
+
+
+
     private Registration assignRegistration (Registration registration, Skier skier, Course course){
         registration.setSkier(skier);
         registration.setCourse(course);
