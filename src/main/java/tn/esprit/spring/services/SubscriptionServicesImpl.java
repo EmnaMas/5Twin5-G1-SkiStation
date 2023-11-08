@@ -1,6 +1,5 @@
 package tn.esprit.spring.services;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -69,7 +68,6 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
         List<Subscription> subscriptions = new ArrayList<>();
 
         for (Subscription sub : subscriptionRepository.findAll()) {
-            Skier aSkier = skierRepository.findBySubscription(sub);
             log.info(sub.getNumSub().toString() );
             subscriptions.add(sub);
         }
