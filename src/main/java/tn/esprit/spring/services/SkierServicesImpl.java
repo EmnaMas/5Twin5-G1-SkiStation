@@ -93,6 +93,6 @@ public class SkierServicesImpl implements ISkierServices {
 
     @Override
     public List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription typeSubscription) {
-        return skierRepository.findBySubscription_TypeSub(typeSubscription);
+        return skierRepository.findBySubscriptionTypeSub(typeSubscription);
     }
 }
