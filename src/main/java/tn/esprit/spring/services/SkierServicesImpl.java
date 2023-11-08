@@ -45,6 +45,7 @@ public class SkierServicesImpl implements ISkierServices {
         return skierRepository.save(skier);
     }
 
+
     @Override
     public Skier assignSkierToSubscription(Long numSkier, Long numSubscription) {
         Skier skier = skierRepository.findById(numSkier).orElse(null);
@@ -52,11 +53,10 @@ public class SkierServicesImpl implements ISkierServices {
         if (skier != null && subscription != null) {
             skier.setSubscription(subscription);
             // Save or perform further operations here
-        } else {
-            // Handle the case when either skier or subscription is not found
-        }
+        } 
         return skierRepository.save(skier);
     }
+
 
     @Override
     public Skier addSkierAndAssignToCourse(Skier skier, Long numCourse) {
