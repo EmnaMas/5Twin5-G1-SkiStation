@@ -16,9 +16,7 @@ import tn.esprit.spring.services.InstructorServicesImpl;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -53,6 +51,8 @@ public class InstructorServicesImplNoMockTest {
         assertNotNull(addedInstructor.getNumInstructor());
         assertEquals("John", addedInstructor.getFirstName());
         assertEquals("Doe", addedInstructor.getLastName());
+        // Vérifiez que l'instructeur a bien été ajouté
+        assertTrue(instructorRepository.findById(addedInstructor.getNumInstructor()).isPresent());
     }
 
     @Test
@@ -75,6 +75,8 @@ public class InstructorServicesImplNoMockTest {
         Iterable<Instructor> retrievedInstructors = instructorServices.retrieveAllInstructors();
 
         assertNotNull(retrievedInstructors);
+        // Vérifiez qu'il y a au moins deux instructeurs dans la liste
+        assertTrue(retrievedInstructors.spliterator().getExactSizeIfKnown() >= 2);
     }
 
     @Test
@@ -138,6 +140,14 @@ public class InstructorServicesImplNoMockTest {
 
         assertNotNull(updatedInstructor);
         assertEquals(1, updatedInstructor.getCourses().size());
+        // Vérifiez que le cours a les propriétés que vous attendez
+        assertTrue(updatedInstructor.getCourses().stream().anyMatch(c ->
+                c.getLevel() == 1 &&
+                        c.getTypeCourse() == TypeCourse.COLLECTIVE_CHILDREN &&
+                        c.getSupport() == Support.SNOWBOARD &&
+                        c.getPrice() == 100.0F &&
+                        c.getTimeSlot() == 2
+        ));
     }
 
 }
