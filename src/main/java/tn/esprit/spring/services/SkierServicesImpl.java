@@ -57,7 +57,7 @@ public class SkierServicesImpl implements ISkierServices {
         if (skier != null) {
             return skierRepository.save(skier);
         } else {
-            
+
             return null;
         }    }
 
