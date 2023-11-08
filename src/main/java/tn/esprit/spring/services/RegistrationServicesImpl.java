@@ -47,7 +47,7 @@ public class RegistrationServicesImpl implements  IRegistrationServices{
             return null;
         }
 
-        if(registrationRepository.countDistinctByNumWeekAndSkier_NumSkierAndCourse_NumCourse(registration.getNumWeek(), skier.getNumSkier(), course.getNumCourse()) >=1){
+        if(registrationRepository.countDistinctByNumWeekAndSkierNumSkierAndCourseNumCourse(registration.getNumWeek(), skier.getNumSkier(), course.getNumCourse()) >=1){
             log.info("Sorry, you're already register to this course of the week :" + registration.getNumWeek());
             return null;
         }
