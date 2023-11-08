@@ -53,9 +53,13 @@ public class SkierServicesImpl implements ISkierServices {
         if (skier != null && subscription != null) {
             skier.setSubscription(subscription);
             // Save or perform further operations here
-        } 
-        return skierRepository.save(skier);
-    }
+        }
+        if (skier != null) {
+            return skierRepository.save(skier);
+        } else {
+            
+            return null;
+        }    }
 
 
     @Override
