@@ -49,7 +49,12 @@ public class SkierServicesImpl implements ISkierServices {
     public Skier assignSkierToSubscription(Long numSkier, Long numSubscription) {
         Skier skier = skierRepository.findById(numSkier).orElse(null);
         Subscription subscription = subscriptionRepository.findById(numSubscription).orElse(null);
-        skier.setSubscription(subscription);
+        if (skier != null && subscription != null) {
+            skier.setSubscription(subscription);
+            // Save or perform further operations here
+        } else {
+            // Handle the case when either skier or subscription is not found
+        }
         return skierRepository.save(skier);
     }
 
