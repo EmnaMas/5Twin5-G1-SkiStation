@@ -20,8 +20,8 @@ public class CourseRestController {
 
     @Operation(description = "Add Course")
     @PostMapping("/add")
-    public Course addCourse(@RequestBody Course Course){
-        return  courseServices.addCourse(Course);
+    public Course addCourse(@RequestBody Course course){
+        return  courseServices.addCourse(course);
     }
 
     @Operation(description = "Retrieve all Courses")
@@ -34,8 +34,8 @@ public class CourseRestController {
     @Operation(description = "Update Course ")
     @java.lang.SuppressWarnings("squid:S2201")
     @PutMapping("/update")
-    public Course updateCourse(@RequestBody Course Course){
-        return  courseServices.updateCourse(Course);
+    public Course updateCourse(@RequestBody Course course){
+        return  courseServices.updateCourse(course);
     }
 
     @Operation(description = "Retrieve Course by Id")
