@@ -11,11 +11,7 @@ services:
 
   ski_app:
     container_name: stationSki
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - IMAGE_NAME=emnamasmoudi/backend
+    image: emnamasmoudi/backend
     restart: on-failure
     ports:
       - "8089:8089"
