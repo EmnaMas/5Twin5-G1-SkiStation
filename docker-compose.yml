@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  mysqldb:
+  mysql_container:
     container_name: mysql_container
     image: mysql:5.7
     environment:
