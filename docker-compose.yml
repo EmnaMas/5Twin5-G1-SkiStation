@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - IMAGE_NAME=emnamasmoudi—5twin5-G1-SkiStation
+        - IMAGE_NAME=emnamasmoudi/backend
     restart: on-failure
     ports:
       - "8089:8089"
