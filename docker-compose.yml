@@ -1,6 +1,7 @@
 version: '3'
 services:
   mysql_container:
+    container_name: mysql_container
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -9,7 +10,11 @@ services:
       - "3306:3306"
 
   ski_app:
-    image: emnamasmoudi/5twin5-g1-skistation
+    container_name: stationSki
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
     ports:
       - "8089:8089"
     depends_on:
