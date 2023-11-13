@@ -6,7 +6,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: stationSki
     ports:
-      - "3307:3306"
+      - "3306:3306"
 
   ski_app:
     image: emnamasmoudi/5twin5-g1-skistation
