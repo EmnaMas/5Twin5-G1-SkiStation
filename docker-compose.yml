@@ -1,33 +1,25 @@
-version: "3.9"
-
+version: "3"
 services:
-  mysql_container:
-    container_name: mysql_container
-    image: mysql:5.7
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: yes
-      MYSQL_DATABASE: stationSki
-    ports:
-      - "3306:3306"
-    volumes:
-      - db:/var/lib/mysql
-  app:
-    container_name: stationSki
-    image: emnamasmoudi/backend
-    restart: on-failure
-    environment:
-      SPRING_APPLICATION_JSON: '{
-      "spring.datasource.url" : "jdbc:mysql://mysql_container:3306/stationSki?createDatabaseIfNotExist=true",
-      "spring.datasource.username" : "root",
-      "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-      "spring.jpa.hibernate.ddl-auto" : "update"
-      }'
-    ports:
-      - "8090:8089"
-    depends_on:
-      - mysql_container
-    volumes:
-      - app_data:/app/data
+      mysqldb:
+        container_name: mysqldb
+        image: mysql:latest
+        restart: unless-stopped
+        ports:
+          - "3306:3306"
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: stationSki
+        volumes:
+          - db_vol:/var/lib/mysqldb
+
+      app:
+        build: .
+        image: emnamasmoudi/backend:latest
+        restart: unless-stopped
+        ports:
+          - "8089:8089"
+        depends_on:
+          - mysqldb
+
 volumes:
-  app_data:
-  db:
+      db_vol:
