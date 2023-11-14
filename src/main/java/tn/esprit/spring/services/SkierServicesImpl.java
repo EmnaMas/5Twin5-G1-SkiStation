@@ -45,13 +45,22 @@ public class SkierServicesImpl implements ISkierServices {
         return skierRepository.save(skier);
     }
 
+
     @Override
     public Skier assignSkierToSubscription(Long numSkier, Long numSubscription) {
         Skier skier = skierRepository.findById(numSkier).orElse(null);
         Subscription subscription = subscriptionRepository.findById(numSubscription).orElse(null);
-        skier.setSubscription(subscription);
-        return skierRepository.save(skier);
-    }
+        if (skier != null && subscription != null) {
+            skier.setSubscription(subscription);
+            // Save or perform further operations here
+        }
+        if (skier != null) {
+            return skierRepository.save(skier);
+        } else {
+
+            return null;
+        }    }
+
 
     @Override
     public Skier addSkierAndAssignToCourse(Skier skier, Long numCourse) {
@@ -80,19 +89,22 @@ public class SkierServicesImpl implements ISkierServices {
     public Skier assignSkierToPiste(Long numSkieur, Long numPiste) {
         Skier skier = skierRepository.findById(numSkieur).orElse(null);
         Piste piste = pisteRepository.findById(numPiste).orElse(null);
-        try {
+
+        if (skier == null) {
+            skier = new Skier();
+            skier.setPistes(new HashSet<>());
+        }
+
+        if (piste != null) {
             skier.getPistes().add(piste);
-        } catch (NullPointerException exception) {
-            Set<Piste> pisteList = new HashSet<>();
-            pisteList.add(piste);
-            skier.setPistes(pisteList);
         }
 
         return skierRepository.save(skier);
     }
 
+
     @Override
     public List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription typeSubscription) {
-        return skierRepository.findBySubscription_TypeSub(typeSubscription);
+        return skierRepository.findBySubscriptionTypeSub(typeSubscription);
     }
 }
