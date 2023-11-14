@@ -2,6 +2,7 @@ package tn.esprit.spring;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -10,12 +11,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Instructor;
 import tn.esprit.spring.repositories.ICourseRepository;
 import tn.esprit.spring.repositories.IInstructorRepository;
 import tn.esprit.spring.services.InstructorServicesImpl;
 
+@ExtendWith(MockitoExtension.class)
 public class InstructorServicesImplTest {
 
     @InjectMocks
@@ -30,6 +34,7 @@ public class InstructorServicesImplTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+
     }
 
     @Test
