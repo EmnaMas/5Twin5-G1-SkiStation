@@ -31,7 +31,7 @@ public class InstructorServicesImplTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
-/*
+
     @Test
     public void testAddInstructor() {
         // Créez un instructeur factice
@@ -43,7 +43,7 @@ public class InstructorServicesImplTest {
         assertNotNull(addedInstructor);
         verify(instructorRepository, times(1)).save(instructor);
     }
-*/
+
     @Test
     public void testRetrieveAllInstructors() {
         // Comportement simulé du repository d'instructeurs
@@ -67,7 +67,7 @@ public class InstructorServicesImplTest {
         assertNotNull(updatedInstructor);
         verify(instructorRepository, times(1)).save(instructor);
     }
-/*
+
     @Test
     public void testRetrieveInstructor() {
         // Créez un instructeur factice
@@ -95,7 +95,5 @@ public class InstructorServicesImplTest {
         verify(courseRepository, times(1)).findById(1L);
         verify(instructorRepository, times(1)).save(instructor);
     }
-    */
-
 }
 
