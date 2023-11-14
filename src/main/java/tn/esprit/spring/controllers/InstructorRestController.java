@@ -8,7 +8,7 @@ import tn.esprit.spring.entities.Instructor;
 import tn.esprit.spring.services.IInstructorServices;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @Tag(name = "\uD83D\uDC69\u200D\uD83C\uDFEB Instructor Management")
 @RestController
 @RequestMapping("/instructor")
