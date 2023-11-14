@@ -1,25 +1,25 @@
 version: "3"
 services:
-      mysqldb:
-        container_name: mysqldb
-        image: mysql:latest
-        restart: unless-stopped
-        ports:
-          - "3306:3306"
-        environment:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: stationSki
-        volumes:
-          - db_vol:/var/lib/mysqldb
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: stationSki
+    volumes:
+      - db_vol:/var/lib/mysql
 
-      app:
-        build: .
-        image: emnamasmoudi/backend:latest
-        restart: unless-stopped
-        ports:
-          - "8089:8089"
-        depends_on:
-          - mysqldb
+  app:
+    build: .
+    image: emnamasmoudi/backend:latest
+    restart: unless-stopped
+    ports:
+      - "8089:8089"
+    depends_on:
+      - mysql
 
 volumes:
-      db_vol:
+  db_vol:
